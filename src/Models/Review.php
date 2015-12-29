@@ -1,22 +1,18 @@
 <?php
 
-    namespace Tshafer\Reviewable\Models;
+namespace Tshafer\Reviewable\Models;
 
-    use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Model;
 
     /**
-     * Class Review
-     *
-     * @package Tshafer\Reviewable\Models
+     * Class Review.
      */
     class Review extends Model
     {
-
         /**
          * @var array
          */
-        protected $guarded = [ 'id', 'created_at', 'updated_at' ];
+        protected $guarded = ['id', 'created_at', 'updated_at'];
 
         /**
          * @return \Illuminate\Database\Eloquent\Relations\MorphTo
@@ -31,7 +27,7 @@
          */
         public function author()
         {
-            return $this->morphTo( 'author' );
+            return $this->morphTo('author');
         }
 
         /**
@@ -41,15 +37,15 @@
          *
          * @return static
          */
-        public function createReview( Model $reviewable, $data, Model $author )
+        public function createReview(Model $reviewable, $data, Model $author)
         {
             $review = new static();
-            $review->fill( array_merge( $data, [
-                'author_id'   => $author->id,
-                'author_type' => get_class( $author ),
-            ] ) );
+            $review->fill(array_merge($data, [
+                'author_id' => $author->id,
+                'author_type' => get_class($author),
+            ]));
 
-            $reviewable->reviews()->save( $review );
+            $reviewable->reviews()->save($review);
 
             return $review;
         }
@@ -60,10 +56,10 @@
          *
          * @return mixed
          */
-        public function updateReview( $id, $data )
+        public function updateReview($id, $data)
         {
-            $review = static::find( $id );
-            $review->update( $data );
+            $review = static::find($id);
+            $review->update($data);
 
             return $review;
         }
@@ -73,8 +69,8 @@
          *
          * @return mixed
          */
-        public function deleteReview( $id )
+        public function deleteReview($id)
         {
-            return static::find( $id )->delete();
+            return static::find($id)->delete();
         }
     }
