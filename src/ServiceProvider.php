@@ -1,15 +1,14 @@
 <?php
 
-    namespace Tshafer\Reviewable;
+namespace Tshafer\Reviewable;
 
-    use Tshafer\ServiceProvider\ServiceProvider as BaseProvider;
+use Tshafer\ServiceProvider\ServiceProvider as BaseProvider;
 
     /**
      * Class ServiceProvider.
      */
     class ServiceProvider extends BaseProvider
     {
-
         /**
          * @var string
          */
@@ -20,7 +19,7 @@
          */
         public function boot()
         {
-            $this->setup( __DIR__ )
+            $this->setup(__DIR__)
                  ->publishMigrations();
         }
     }

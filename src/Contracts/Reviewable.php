@@ -1,18 +1,14 @@
 <?php
 
-    namespace Tshafer\Reviewable\Contracts;
+namespace Tshafer\Reviewable\Contracts;
 
-    use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Model;
 
     /**
-     * Interface Reviewable
-     *
-     * @package Tshafer\Reviewable\Contracts
+     * Interface Reviewable.
      */
     interface Reviewable
     {
-
         /**
          * @return \Illuminate\Database\Eloquent\Relations\MorphMany
          */
@@ -25,7 +21,7 @@
          *
          * @return mixed
          */
-        public function review( $data, Model $author, Model $parent = null );
+        public function review($data, Model $author, Model $parent = null);
 
         /**
          * @param            $id
@@ -34,12 +30,12 @@
          *
          * @return mixed
          */
-        public function updateReview( $id, $data, Model $parent = null );
+        public function updateReview($id, $data, Model $parent = null);
 
         /**
          * @param $id
          *
          * @return mixed
          */
-        public function deleteReview( $id );
+        public function deleteReview($id);
     }
